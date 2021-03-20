@@ -15,6 +15,7 @@ Order of Operations
     b) git pull origin main
     c) git checkout davis_branch
     d) git merge main
+        *remember to use " 'shift'+';' and then 'q' " to move on from the message page.
 1) Make change on your computer
 2) Add Commit and Push to your branch 
     a) git status
