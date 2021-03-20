@@ -1,5 +1,14 @@
 # breweries-team4
 
+<<<<<<< HEAD
+workflow to pull and push
+
+git pull origin main
+git checkout
+git merge main
+
+use git remote -v to check where you are pointing
+=======
 Order of Operations
 0) Everyone pulls new info
     a) git checkout main 
@@ -21,3 +30,4 @@ Order of Operations
     b) git pull origin main
     c) git checkout davis_branch
     d) git merge main
+>>>>>>> main
