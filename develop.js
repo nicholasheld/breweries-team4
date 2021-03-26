@@ -21,7 +21,7 @@ function getBrewery(postalCode) {
       
     $.ajax(settings).done(function (response) {
 
-    if(response){
+    if(response.length >= 1){
         console.log(response)
       
             for (var i = 0; i < response.length; i++) {
@@ -37,10 +37,10 @@ function getBrewery(postalCode) {
                 $("#brewery-info").append(searchList);
             } 
     } else {
-        var noResult = "No Search Results Found";
-        var noResultSpan = $("<span>");
-        noResultSpan.text(noResult);
-        $("#brewery-info").append(noResultSpan)
+        console.log("not found")
+        var noResultSpan = $("<h2>");
+        noResultSpan.text("No Search Results Found");
+        $("#brewery-info").append(noResultSpan);
     }
       
 });
