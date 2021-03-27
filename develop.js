@@ -7,14 +7,18 @@ const html = (strings, ...values) => new DOMParser().parseFromString(strings.map
 var searchButton = $("#search-btn")
 var userInput = $("#user-input")
 var breweryList = [];
-// var foodList = [];
+var foodList = [];
 // 
+
+$(document).ready(function() {
+    $(".center").hide()
+})
 
 // Function to get data from brewery API
 function getBrewery(postalCode) {
     $("#brewery-info").empty();
     var settings = {
-        "url": `https://api.openbrewerydb.org/breweries?by_city=${postalCode}&per_page=10`,
+        "url": `https://api.openbrewerydb.org/breweries?by_city=${postalCode}&per_page=20`,
         "method": "GET",
         "timeout": 0,
     };
@@ -27,7 +31,7 @@ function getBrewery(postalCode) {
       
                 var searchList = html`
                     <div class="card-info">
-                        <h1 class="card-title">${response[i].name}</h1>
+                        <h3 class="card-title">${response[i].name}</h3>
                         <p class="card-location"><b>Brewery type:</b> ${response[i].brewery_type}</p>
                         <p class="card-location"><b>Location: </b>${response[i].street}, ${response[i].city}, ${response[i].state}</p>
                         <p class="card-location"><b>Tel.</b> ${response[i].phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}</p>
@@ -47,12 +51,12 @@ function getBrewery(postalCode) {
 
 function getRestaurant(postalCode) {
 
-        // $("#restaurant-info").empty();
+        $("#restaurant-info").empty();
 
         const settings = {
         "async": true,
         "crossDomain": true,
-        "url": `https://documenu.p.rapidapi.com/restaurants/search/fields?address=${postalCode}&size=10`,
+        "url": `https://documenu.p.rapidapi.com/restaurants/search/fields?address=${postalCode}&size=20`,
         "method": "GET",
         "headers": {
             "x-api-key": "e7e8d2a801b181805ac00744dc1c582c",
@@ -69,34 +73,42 @@ function getRestaurant(postalCode) {
                 
                 var searchList2 = html`
                     <div class="card-info2">
-                        <h1 class="card-title">${response.data[i].restaurant_name}</h1>
-                        <p class="card-location"><b>Cuisine: </b>${response.data[i].cuisines[0]}</p>
-                        <p class="card-location"><b>Location: </b>${response.data[i].address.formatted}</p>
-                        <p class="card-location"><b>Tel.</b> ${response.data[i].restaurant_phone}</p>
-                        <a class="card-location" href="${response.data[i].restaurant_website}" target="_blank">${response.data[i].restaurant_website}</a>
+                        <h3 class="card-title">${response.data[i].restaurant_name}</h3>
+                        <p class="card-location1"><b>Cuisine: </b>${response.data[i].cuisines[0]}</p>
+                        <p class="card-location1"><b>Location: </b>${response.data[i].address.formatted}</p>
+                        <p class="card-location1"><b>Tel.</b> ${response.data[i].restaurant_phone}</p>
+                        <a class="card-location1" href="${response.data[i].restaurant_website}" target="_blank">${response.data[i].restaurant_website}</a>
                     </div>`;
                 
                 $("#restaurant-info").append(searchList2);
-            } 
+
+                
+
+            }  
     } /* else {
         var noResultSpan = $("<h2>");
         noResultSpan.text("No Search Results Found");
-        $("#brewery-info").append(noResultSpan);
+        $("#restaurant-info").append(noResultSpan);
     } */
 
-    });
-}
+    
 
-// Function to get data from restaurant API
-// prevent default
-// post function
+    });
+    
+}
 
 // On click event for search button
 $("#search-btn").on("click", function(event) {
     event.preventDefault();
 
+    $(".center").show()
+    
     var userInputVal = userInput.val().trim();
-
+    if (!foodList.includes(userInputVal)) {
+        foodList.push(userInputVal);
+        $("restaurant-info").append(foodList)
+    }
+    localStorage.setItem("userInputVal", JSON.stringify(userInputVal));
     getBrewery(userInputVal);
     getRestaurant(userInputVal);
     // Prevent continual appending of the search result
@@ -107,7 +119,19 @@ $("#search-btn").on("click", function(event) {
 
 
 // Local storage to show last index or append a zip code list dynamically
-// $(document).ready()
+$(document).ready(function(){
+
+    var history = JSON.parse(localStorage.getItem("userInputVal"));
+
+    
+    if (history !== null) {
+        var lastSearch = history.length - 1;
+        var lastRestaurant = history[lastSearch];
+        getRestaurant(lastRestaurant);
+    } 
+
+
+})
 
 
 
