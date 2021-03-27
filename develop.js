@@ -20,9 +20,9 @@ function getBrewery(postalCode) {
     };
       
     $.ajax(settings).done(function (response) {
-
-    if(response.length >= 1){
         console.log(response);
+    if(response.length >= 1){
+        
             for (var i = 0; i < response.length; i++) {
       
                 var searchList = html`
@@ -52,7 +52,7 @@ function getRestaurant(postalCode) {
         const settings = {
         "async": true,
         "crossDomain": true,
-        "url": `https://documenu.p.rapidapi.com/restaurants/search/fields?address=${postalCode}`,
+        "url": `https://documenu.p.rapidapi.com/restaurants/search/fields?address=${postalCode}&size=10`,
         "method": "GET",
         "headers": {
             "x-api-key": "e7e8d2a801b181805ac00744dc1c582c",
@@ -63,19 +63,19 @@ function getRestaurant(postalCode) {
     $.ajax(settings).done(function (response) {
         console.log(response);
 
-        if(response.length >= 1){
-      
-            for (var i = 0; i < response.length; i++) {
-      
+        if(response.data.length >= 1){
+            
+            for (var i = 0; i < response.data.length; i++) {
+                
                 var searchList2 = html`
-                    <div class="card-info">
-                        <h1 class="card-title">${data.response[i].name}</h1>
-                        <p class="card-location"><b>Brewery type:</b> ${response[i].brewery_type}</p>
-                        <p class="card-location"><b>Location: </b>${response[i].street}, ${response[i].city}, ${response[i].state}</p>
-                        <p class="card-location"><b>Tel.</b> ${response[i].phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}</p>
-                        <a class="card-location" href="${response[i].website_url}" target="_blank">${response[i].website_url}</a>
+                    <div class="card-info2">
+                        <h1 class="card-title">${response.data[i].restaurant_name}</h1>
+                        <p class="card-location"><b>Cuisine: </b>${response.data[i].cuisines[0]}</p>
+                        <p class="card-location"><b>Location: </b>${response.data[i].address.formatted}</p>
+                        <p class="card-location"><b>Tel.</b> ${response.data[i].restaurant_phone}</p>
+                        <a class="card-location" href="${response.data[i].restaurant_website}" target="_blank">${response.data[i].restaurant_website}</a>
                     </div>`;
-        
+                
                 $("#restaurant-info").append(searchList2);
             } 
     } /* else {
