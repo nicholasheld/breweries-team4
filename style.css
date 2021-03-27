@@ -1,9 +1,39 @@
 /*
 Input and search button styling
 */
+
+body {
+    background-color: rgb(239, 253, 255);
+}
+
+p {
+    margin: 0;
+}
+
+.button {
+    padding: .80em 1em
+}
+
+.callout {
+    background-image: url("https://www.sidel.com/cgi-bin/categories/top-beer.jpg");
+    background-size: 100vw;
+    background-position: center;
+}
+
+.title {
+    font-weight: bolder;
+    text-shadow:  0 3px 5px WHITE;
+}
+
+.subheader {
+    color: black;
+}
+
+#brewery-info {
+    margin: 0px 20%;
+}
+
 .newsletter-subscribe {
-    background: #fefefe;
-    height: 200px;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -14,13 +44,26 @@ Input and search button styling
     justify-content: center;
   }
   
-.newsletter-subscribe .input-group-field {
-    border-radius: 5000px 0 0 5000px;
+.newsletter-subscribe {
+
+    text-align: center;
     position: relative;
+    display: flex;
+    flex-direction: column;
     -webkit-transform: translateX(0.5rem);
         -ms-transform: translateX(0.5rem);
             transform: translateX(0.5rem);
   }
+
+.input-group-field {
+    border-radius: 5000px 0 0 5000px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    -webkit-transform: translateX(0.5rem);
+        -ms-transform: translateX(0.5rem);
+            transform: translateX(0.5rem);
+}
   
 .newsletter-subscribe .input-group {
     margin-bottom: 0;
@@ -28,6 +71,10 @@ Input and search button styling
   
 .newsletter-subscribe .newsletter-subscribe-inner {
     text-align: center;
+    background-color: rgb(255, 226, 62);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: -3px 3px gray;
+    margin: 3%;
   }
   
 .newsletter-subscribe .input-group-button .button {
@@ -50,9 +97,6 @@ Input and search button styling
       padding: 0 6rem;
     }
   }
-  
-  
-  
 
 
 /*
@@ -67,7 +111,12 @@ card styling
   .card-info {
     padding: 1rem;
     display: -ms-grid;
-    display: grid;
+    display: block;
+    background-color: rgb(255, 226, 62);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: -3px 3px gray;
+    margin: 3%;
+
     -ms-grid-rows: 1fr 2.5rem;
         grid-template-rows: 1fr 2.5rem;
     -ms-grid-columns: 3fr 1fr;
@@ -76,6 +125,7 @@ card styling
   
   .card-title {
     font-size: 2rem;
+    font-weight: bold;
     grid-row: 1 / 2;
     grid-column: 1 / 2;
   }
