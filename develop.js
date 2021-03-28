@@ -8,15 +8,12 @@ var searchButton = $("#search-btn")
 var userInput = $("#user-input")
 var breweryList = [];
 var foodList = [];
-// 
-
-$(document).ready(function() {
-    $(".center").hide()
-})
 
 // Function to get data from brewery API
 function getBrewery(postalCode) {
+
     $("#brewery-info").empty();
+
     var settings = {
         "url": `https://api.openbrewerydb.org/breweries?by_city=${postalCode}&per_page=20`,
         "method": "GET",
@@ -24,7 +21,7 @@ function getBrewery(postalCode) {
     };
       
     $.ajax(settings).done(function (response) {
-        console.log(response);
+
     if(response.length >= 1){
         
             for (var i = 0; i < response.length; i++) {
@@ -46,7 +43,6 @@ function getBrewery(postalCode) {
         $("#brewery-info").append(noResultSpan);
     }
     });
-
 }
 
 function getRestaurant(postalCode) {
@@ -59,7 +55,7 @@ function getRestaurant(postalCode) {
         "url": `https://documenu.p.rapidapi.com/restaurants/search/fields?address=${postalCode}&size=20`,
         "method": "GET",
         "headers": {
-            "x-api-key": "e7e8d2a801b181805ac00744dc1c582c",
+            "x-api-key": "848db6fb69eb78b8d5a37e119a0a2748",
             "x-rapidapi-key": "69ab1ed06emsh03eed11d8b3bce0p18b21fjsnea403cc1a6b9",
             "x-rapidapi-host": "documenu.p.rapidapi.com"
         }
@@ -85,13 +81,11 @@ function getRestaurant(postalCode) {
                 
 
             }  
-    } /* else {
+    } else {
         var noResultSpan = $("<h2>");
         noResultSpan.text("No Search Results Found");
         $("#restaurant-info").append(noResultSpan);
-    } */
-
-    
+    }
 
     });
     
@@ -99,44 +93,30 @@ function getRestaurant(postalCode) {
 
 // On click event for search button
 $("#search-btn").on("click", function(event) {
+
     event.preventDefault();
 
     $(".center").show()
     
     var userInputVal = userInput.val().trim();
-    if (!foodList.includes(userInputVal)) {
-        foodList.push(userInputVal);
-        $("restaurant-info").append(foodList)
-    }
+
     localStorage.setItem("userInputVal", JSON.stringify(userInputVal));
     getBrewery(userInputVal);
     getRestaurant(userInputVal);
-    // Prevent continual appending of the search result
-    // if (results are empty){
-    //   Text(no breweries were found for this zip code)
-    // }
 });
 
 
-// Local storage to show last index or append a zip code list dynamically
+// Local storage to show last index
 $(document).ready(function(){
 
-    var history = JSON.parse(localStorage.getItem("userInputVal"));
+    $(".center").hide();
 
-    
     if (history !== null) {
-        var lastSearch = history.length - 1;
-        var lastRestaurant = history[lastSearch];
-        getRestaurant(lastRestaurant);
-    } 
-
-
+        var history = JSON.parse(localStorage.getItem("userInputVal"));
+        var lastSearch = history;
+        getRestaurant(lastSearch);
+        getBrewery(lastSearch);
+        console.log(lastSearch);
+        $(".center").show()
+    }
 })
-
-
-
-
-/* Extras 
-https://api.openbrewerydb.org/breweries/autocomplete?query=${postalCode}&per_page=10&sort=-name
-https://api.openbrewerydb.org/breweries?by_type=${type}
-*/
