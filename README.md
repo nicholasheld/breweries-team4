@@ -10,6 +10,8 @@ By Samer, Davis, Paige and Nicholas
 ## Description
 Our website helps the user find nearby breweries and restaurants. It combines two APIs [Open Brewery DB](https://www.openbrewerydb.org/) and [Documenu](https://documenu.com/) creating lists based on the **city** that a user enters into the search form. 
 
+[Site Screenshot](/assets/images/Website.png)
+
 ### Notes - Collaborative Git Projects
 Order of Operations
 0) Everyone pulls new info
