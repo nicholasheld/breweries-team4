@@ -42,8 +42,10 @@ a {
     color: black;
 }
 
+/* 
 #brewery-info {
 }
+*/
 
 .newsletter-subscribe {
     display: -webkit-flex;
@@ -141,7 +143,7 @@ card styling
 .card-location {
     color: rgb(105, 20, 20)
 }
-
+/* making the results cards have reverse colors (added a different version of card style) */
   .card-info2 {
     padding: 1rem;
     display: -ms-grid;
@@ -199,6 +201,7 @@ card styling
     justify-self: right;
   }
 
+  /* results columns */
 #right {
     width: 50%;
     float: right;

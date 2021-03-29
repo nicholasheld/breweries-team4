@@ -1,14 +1,18 @@
 # breweries-team4
+By Samer, Davis, Paige and Nicholas
 
-<<<<<<< HEAD
-workflow to pull and push
+## Deployed Application
+[Our site](https://nicholasheld.github.io/breweries-team4/)
 
-git pull origin main
-git checkout
-git merge main
+## GitHub Repository
+[GitHub Project](https://github.com/nicholasheld/breweries-team4)
 
-use git remote -v to check where you are pointing
-=======
+## Description
+Our website helps the user find nearby breweries and restaurants. It combines two APIs [Open Brewery DB](https://www.openbrewerydb.org/) and [Documenu](https://documenu.com/) creating lists based on the **city** that a user enters into the search form. 
+
+[Site Screenshot](/assets/images/Website.png)
+
+### Notes - Collaborative Git Projects
 Order of Operations
 0) Everyone pulls new info
     a) git checkout main 
@@ -31,4 +35,3 @@ Order of Operations
     b) git pull origin main
     c) git checkout davis_branch
     d) git merge main
->>>>>>> main
