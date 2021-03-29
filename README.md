@@ -8,10 +8,7 @@ By Samer, Davis, Paige and Nicholas
 [GitHub Project](https://github.com/nicholasheld/breweries-team4)
 
 ## Description
-Our website helps the user find nearby breweries and restaurants. It combines two APIs [Open Brewery DB](https://www.openbrewerydb.org/) and [Documenu](https://documenu.com/) creating lists based on the *city* that a user enters into the search form. 
-
-## Table of Contents
-Edit the readme file to include (description, table of contents, image, credit participants,
+Our website helps the user find nearby breweries and restaurants. It combines two APIs [Open Brewery DB](https://www.openbrewerydb.org/) and [Documenu](https://documenu.com/) creating lists based on the **city** that a user enters into the search form. 
 
 ### Notes - Collaborative Git Projects
 Order of Operations
