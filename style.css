@@ -27,6 +27,10 @@ a {
     padding: .80em 1em
 }
 
+/*
+Header styling
+*/
+
 .callout {
     background-image: url("https://www.sidel.com/cgi-bin/categories/top-beer.jpg");
     background-size: 100vw;
@@ -42,9 +46,8 @@ a {
     color: black;
 }
 
-/* 
-#brewery-info {
-}
+/*
+Form styling
 */
 
 .newsletter-subscribe {
@@ -202,6 +205,8 @@ card styling
   }
 
   /* results columns */
+
+  
 #right {
     width: 50%;
     float: right;
