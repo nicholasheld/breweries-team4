@@ -1,5 +1,18 @@
 # breweries-team4
+By Samer, Davis, Paige and Nicholas
 
+## Deployed Application
+[Our site](https://nicholasheld.github.io/breweries-team4/)
+
+## GitHub Repository
+[GitHub Project](https://github.com/nicholasheld/breweries-team4)
+
+## Description
+
+## Table of Contents
+Edit the readme file to include (description, table of contents, image, link to deployed application and github repo, credit participants, built with section) 
+
+### Notes on Collaborative Git Projects
 Order of Operations
 0) Everyone pulls new info
     a) git checkout main 
