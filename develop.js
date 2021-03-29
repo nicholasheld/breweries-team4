@@ -44,7 +44,7 @@ function getBrewery(postalCode) {
     }
     });
 }
-
+// Function to get data from restaurant API
 function getRestaurant(postalCode) {
 
         $("#restaurant-info").empty();
@@ -55,6 +55,7 @@ function getRestaurant(postalCode) {
         "url": `https://documenu.p.rapidapi.com/restaurants/search/fields?address=${postalCode}&size=20`,
         "method": "GET",
         "headers": {
+            // individual user api-key lasts 500 API uses unless upgraded. 
             "x-api-key": "848db6fb69eb78b8d5a37e119a0a2748",
             "x-rapidapi-key": "69ab1ed06emsh03eed11d8b3bce0p18b21fjsnea403cc1a6b9",
             "x-rapidapi-host": "documenu.p.rapidapi.com"
